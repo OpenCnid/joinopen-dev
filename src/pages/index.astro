@@ -481,40 +481,40 @@ float metaball(vec2 p, vec2 c, float r) {
 }
 
 void main() {
-  vec2 uv = gl_FragCoord.xy / u_resolution;
   vec2 p = (gl_FragCoord.xy - u_resolution * 0.5) / min(u_resolution.x, u_resolution.y);
-  float t = u_time * 0.3;
+  float t = u_time * 0.25;
 
-  // 6 autonomous metaballs
+  // 6 autonomous metaballs (bigger radii)
   float v = 0.0;
-  v += metaball(p, vec2(sin(t*0.7)*0.4, cos(t*0.6)*0.3), 0.18);
-  v += metaball(p, vec2(cos(t*0.5)*0.5, sin(t*0.8)*0.4), 0.15);
-  v += metaball(p, vec2(sin(t*0.9+2.0)*0.3, cos(t*0.4+1.0)*0.5), 0.20);
-  v += metaball(p, vec2(cos(t*0.6+4.0)*0.6, sin(t*0.7+3.0)*0.2), 0.12);
-  v += metaball(p, vec2(sin(t*0.4+5.0)*0.2, cos(t*0.9+2.0)*0.4), 0.16);
-  v += metaball(p, vec2(cos(t*0.8+1.0)*0.4, sin(t*0.5+4.0)*0.3), 0.14);
+  v += metaball(p, vec2(sin(t*0.7)*0.5, cos(t*0.6)*0.4), 0.30);
+  v += metaball(p, vec2(cos(t*0.5)*0.6, sin(t*0.8)*0.5), 0.25);
+  v += metaball(p, vec2(sin(t*0.9+2.0)*0.4, cos(t*0.4+1.0)*0.6), 0.32);
+  v += metaball(p, vec2(cos(t*0.6+4.0)*0.7, sin(t*0.7+3.0)*0.3), 0.22);
+  v += metaball(p, vec2(sin(t*0.4+5.0)*0.3, cos(t*0.9+2.0)*0.5), 0.28);
+  v += metaball(p, vec2(cos(t*0.8+1.0)*0.5, sin(t*0.5+4.0)*0.4), 0.24);
 
-  // Mouse-following metaball
+  // Mouse-following metaball (large)
   vec2 mp = (u_mouse - u_resolution * 0.5) / min(u_resolution.x, u_resolution.y);
-  v += metaball(p, mp, 0.22);
+  v += metaball(p, mp, 0.35);
 
-  // Color: black bg, orange glow for metaballs
-  float edge = smoothstep(0.8, 1.6, v);
-  float core = smoothstep(1.6, 2.8, v);
+  // Color: orange-amber gradient
+  float edge = smoothstep(0.4, 1.0, v);
+  float core = smoothstep(1.0, 2.0, v);
+  float bright = smoothstep(2.0, 3.5, v);
 
   vec3 orange = vec3(0.976, 0.451, 0.086);  // #f97316
   vec3 amber  = vec3(0.984, 0.573, 0.235);  // #fb923c
+  vec3 hot    = vec3(1.0, 0.75, 0.4);
 
-  vec3 col = mix(orange, amber, core) * edge;
+  vec3 col = mix(orange * 0.6, orange, edge);
+  col = mix(col, amber, core);
+  col = mix(col, hot, bright * 0.5);
 
-  // Subtle chromatic shift
-  float r_shift = smoothstep(0.7, 1.5, v + 0.05);
-  float b_shift = smoothstep(0.9, 1.7, v - 0.05);
-  col.r = mix(col.r, orange.r, r_shift * 0.15);
-  col.b = mix(col.b, 0.3, b_shift * 0.08);
+  // Outer glow: visible even at low field values
+  float outerGlow = smoothstep(0.15, 0.5, v);
 
-  // Fade opacity so text is readable
-  float alpha = edge * 0.12 + core * 0.06;
+  // Alpha: much more visible
+  float alpha = outerGlow * 0.25 + edge * 0.35 + core * 0.15;
 
   gl_FragColor = vec4(col, alpha);
 }`;
