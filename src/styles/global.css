@@ -17,15 +17,69 @@
 
 html {
   scroll-behavior: smooth;
+  cursor: none;
 }
 
 body {
   @apply bg-open-black text-open-white font-sans antialiased;
   overflow-x: hidden;
+  cursor: none;
+}
+
+/* Show default cursor on mobile */
+@media (pointer: coarse) {
+  html, body, * { cursor: auto !important; }
 }
 
 /* ============================================
-   NOISE GRAIN TEXTURE (full page)
+   CUSTOM CURSOR
+   ============================================ */
+
+.custom-cursor {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+
+.cursor-dot {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: #fff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s;
+  z-index: 10000;
+}
+
+.cursor-ring {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              height 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.3s;
+  z-index: 9999;
+}
+
+.cursor-hover .cursor-dot {
+  width: 10px;
+  height: 10px;
+  background: #f97316;
+}
+
+.cursor-hover .cursor-ring {
+  width: 52px;
+  height: 52px;
+  border-color: rgba(249, 115, 22, 0.4);
+}
+
+/* ============================================
+   NOISE GRAIN TEXTURE
    ============================================ */
 
 body::before {
@@ -34,7 +88,7 @@ body::before {
   inset: 0;
   z-index: 100;
   pointer-events: none;
-  opacity: 0.03;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 256px 256px;
@@ -46,8 +100,8 @@ body::before {
 
 .cursor-spotlight {
   position: fixed;
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
   background: radial-gradient(
     circle,
@@ -58,12 +112,11 @@ body::before {
   pointer-events: none;
   z-index: 1;
   transform: translate(-50%, -50%);
-  transition: opacity 0.3s ease;
   will-change: left, top;
 }
 
 /* ============================================
-   LIQUID GLASS — CORE
+   LIQUID GLASS
    ============================================ */
 
 .glass {
@@ -84,7 +137,7 @@ body::before {
   overflow: hidden;
 }
 
-/* Internal light reflection */
+/* Sweep light reflection on hover */
 .glass::after {
   content: '';
   position: absolute;
@@ -95,15 +148,15 @@ body::before {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.04),
     transparent
   );
-  transition: left 0.6s ease;
+  transition: left 0.7s ease;
   pointer-events: none;
 }
 
 .glass:hover::after {
-  left: 100%;
+  left: 120%;
 }
 
 .glass:hover {
@@ -131,14 +184,12 @@ body::before {
 }
 
 /* ============================================
-   GLASS TILT (mouse-tracking refraction)
+   GLASS TILT (mouse-tracking light)
    ============================================ */
 
 .glass-tilt {
   --mouse-x: 50%;
   --mouse-y: 50%;
-  transform-style: preserve-3d;
-  perspective: 800px;
 }
 
 .glass-tilt::before {
@@ -147,8 +198,8 @@ body::before {
   inset: 0;
   border-radius: inherit;
   background: radial-gradient(
-    400px circle at var(--mouse-x) var(--mouse-y),
-    rgba(249, 115, 22, 0.08),
+    350px circle at var(--mouse-x) var(--mouse-y),
+    rgba(249, 115, 22, 0.1),
     transparent 60%
   );
   opacity: 0;
@@ -162,7 +213,7 @@ body::before {
 }
 
 /* ============================================
-   GRADIENT BORDERS (animated)
+   GRADIENT BORDERS (rotating conic)
    ============================================ */
 
 .gradient-border {
@@ -219,7 +270,7 @@ body::before {
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.25) 0%,
     transparent 50%
   );
   opacity: 0;
@@ -247,60 +298,11 @@ body::before {
 }
 
 .glow-button:hover {
-  transform: translateY(-2px);
   box-shadow: 0 8px 32px rgba(249, 115, 22, 0.35);
 }
 
 /* ============================================
-   AURORA BACKGROUND (hero)
-   ============================================ */
-
-.aurora {
-  position: relative;
-  overflow: hidden;
-}
-
-.aurora::before,
-.aurora::after {
-  content: '';
-  position: absolute;
-  pointer-events: none;
-}
-
-.aurora::before {
-  top: -50%;
-  left: -20%;
-  width: 140%;
-  height: 100%;
-  background:
-    radial-gradient(ellipse 80% 50% at 20% 40%, rgba(249, 115, 22, 0.06) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(251, 146, 60, 0.04) 0%, transparent 50%),
-    radial-gradient(ellipse 50% 60% at 50% 60%, rgba(249, 115, 22, 0.03) 0%, transparent 40%);
-  animation: aurora-drift 15s ease-in-out infinite alternate;
-}
-
-.aurora::after {
-  bottom: -30%;
-  right: -20%;
-  width: 80%;
-  height: 60%;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(249, 115, 22, 0.04) 0%,
-    transparent 60%
-  );
-  animation: aurora-drift 20s ease-in-out infinite alternate-reverse;
-}
-
-@keyframes aurora-drift {
-  0% { transform: translate(0, 0) rotate(0deg) scale(1); }
-  33% { transform: translate(30px, -20px) rotate(1deg) scale(1.05); }
-  66% { transform: translate(-20px, 10px) rotate(-1deg) scale(0.98); }
-  100% { transform: translate(10px, -10px) rotate(0.5deg) scale(1.02); }
-}
-
-/* ============================================
-   DOT GRID (enhanced)
+   DOT GRID
    ============================================ */
 
 .dot-grid {
@@ -323,7 +325,7 @@ body::before {
   position: absolute;
   width: 2px;
   height: 2px;
-  background: rgba(249, 115, 22, 0.3);
+  background: rgba(249, 115, 22, 0.4);
   border-radius: 50%;
   animation: particle-float linear infinite;
 }
@@ -334,20 +336,14 @@ body::before {
 .particle:nth-child(4) { left: 55%; animation-duration: 24s; animation-delay: -2s; }
 .particle:nth-child(5) { left: 70%; animation-duration: 20s; animation-delay: -6s; }
 .particle:nth-child(6) { left: 85%; animation-duration: 19s; animation-delay: -10s; }
-.particle:nth-child(7) { left: 15%; animation-duration: 21s; animation-delay: -12s; width: 3px; height: 3px; opacity: 0.5; }
-.particle:nth-child(8) { left: 60%; animation-duration: 17s; animation-delay: -14s; width: 3px; height: 3px; opacity: 0.4; }
+.particle:nth-child(7) { left: 15%; animation-duration: 21s; animation-delay: -12s; width: 3px; height: 3px; opacity: 0.6; }
+.particle:nth-child(8) { left: 60%; animation-duration: 17s; animation-delay: -14s; width: 3px; height: 3px; opacity: 0.5; }
 
 @keyframes particle-float {
-  0% {
-    transform: translateY(100vh) rotate(0deg);
-    opacity: 0;
-  }
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
   10% { opacity: 1; }
   90% { opacity: 1; }
-  100% {
-    transform: translateY(-100px) rotate(360deg);
-    opacity: 0;
-  }
+  100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
 }
 
 /* ============================================
@@ -398,12 +394,7 @@ body::before {
   transform: translateX(-50%);
   width: 40%;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(249, 115, 22, 0.25),
-    transparent
-  );
+  background: linear-gradient(90deg, transparent, rgba(249, 115, 22, 0.25), transparent);
 }
 
 /* ============================================
@@ -422,7 +413,6 @@ body::before {
   transform: translateY(0);
 }
 
-/* Staggered children */
 .reveal-stagger > * {
   opacity: 0;
   transform: translateY(20px);
@@ -431,9 +421,9 @@ body::before {
 }
 
 .reveal-stagger.revealed > *:nth-child(1) { transition-delay: 0ms; }
-.reveal-stagger.revealed > *:nth-child(2) { transition-delay: 80ms; }
-.reveal-stagger.revealed > *:nth-child(3) { transition-delay: 160ms; }
-.reveal-stagger.revealed > *:nth-child(4) { transition-delay: 240ms; }
+.reveal-stagger.revealed > *:nth-child(2) { transition-delay: 100ms; }
+.reveal-stagger.revealed > *:nth-child(3) { transition-delay: 200ms; }
+.reveal-stagger.revealed > *:nth-child(4) { transition-delay: 300ms; }
 
 .reveal-stagger.revealed > * {
   opacity: 1;
@@ -473,12 +463,15 @@ body::before {
    FAQ
    ============================================ */
 
-details summary::-webkit-details-marker {
-  display: none;
-}
+details summary::-webkit-details-marker { display: none; }
+details summary { list-style: none; }
 
-details summary {
-  list-style: none;
+/* ============================================
+   STAT COUNTER
+   ============================================ */
+
+.stat-number {
+  font-variant-numeric: tabular-nums;
 }
 
 /* ============================================
@@ -495,22 +488,8 @@ details summary {
 }
 
 /* ============================================
-   COUNTER ANIMATION
+   ACCESSIBILITY
    ============================================ */
-
-.stat-number {
-  font-variant-numeric: tabular-nums;
-}
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
-
-@media (max-width: 640px) {
-  .cursor-spotlight {
-    display: none;
-  }
-}
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -518,12 +497,15 @@ details summary {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .reveal {
+  html, body { cursor: auto; }
+  .custom-cursor { display: none !important; }
+  .cursor-spotlight { display: none !important; }
+  .reveal, .reveal-stagger > * {
     opacity: 1;
     transform: none;
   }
-  .reveal-stagger > * {
-    opacity: 1;
-    transform: none;
-  }
+}
+
+@media (pointer: coarse) {
+  .cursor-spotlight, .custom-cursor { display: none !important; }
 }

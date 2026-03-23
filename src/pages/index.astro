@@ -4,7 +4,6 @@ import Base from '../layouts/Base.astro';
 const title = 'Open_ | Learn to build real things with AI';
 const description = 'A free 12-week cohort where you learn to build real products with AI. Not a coding bootcamp. Not prompt engineering. You build and ship something real.';
 
-// TODO: Replace with actual links when ready
 const SWORD_FORM_URL = '#';
 const DISCORD_URL = '#';
 const TWITTER_URL = 'https://x.com/joinopen';
@@ -16,7 +15,13 @@ const COHORT_CAP = 100;
     Skip to content
   </a>
 
-  <!-- Cursor spotlight (desktop only) -->
+  <!-- Custom cursor (desktop) -->
+  <div id="custom-cursor" class="custom-cursor" aria-hidden="true">
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+  </div>
+
+  <!-- Cursor spotlight -->
   <div id="cursor-spotlight" class="cursor-spotlight" aria-hidden="true"></div>
 
   <!-- Nav -->
@@ -25,7 +30,7 @@ const COHORT_CAP = 100;
       <a href="#" class="text-xl font-bold tracking-tight">Open<span class="text-open-accent">_</span></a>
       <a
         href="#sword"
-        class="glow-button text-sm font-medium bg-open-accent/10 text-open-accent px-4 py-2 rounded-lg relative z-10"
+        class="magnetic glow-button text-sm font-medium bg-open-accent/10 text-open-accent px-4 py-2 rounded-lg relative z-10"
       >
         Submit Your Sword →
       </a>
@@ -34,33 +39,29 @@ const COHORT_CAP = 100;
 
   <main id="main-content">
 
-    <!-- Hero -->
-    <section class="aurora pt-36 pb-28 px-6 relative">
+    <!-- Hero with WebGL shader background -->
+    <section class="relative pt-36 pb-28 px-6 overflow-hidden min-h-[90vh] flex items-center" id="hero">
+      <!-- WebGL Canvas -->
+      <canvas id="hero-shader" class="absolute inset-0 w-full h-full" aria-hidden="true"></canvas>
+
       <!-- Particles -->
       <div class="particles" aria-hidden="true">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div>
       </div>
 
-      <div class="max-w-4xl mx-auto text-center relative z-10">
-        <!-- Floating orb -->
-        <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-open-accent/4 rounded-full blur-[120px] animate-pulse-slow pointer-events-none"></div>
-
+      <div class="max-w-4xl mx-auto text-center relative z-10 hero-parallax">
         <div class="reveal">
-          <h1 class="text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight leading-[1.05] mb-8 relative">
-            <span class="gradient-text">Learn to build<br />real things</span><br />
-            <span class="accent-gradient-text">with AI.</span>
+          <h1 class="text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight leading-[1.05] mb-8">
+            <span class="scramble-text gradient-text" data-text="Learn to build">Learn to build</span><br />
+            <span class="scramble-text gradient-text" data-text="real things" data-delay="400">real things</span><br />
+            <span class="scramble-text accent-gradient-text" data-text="with AI." data-delay="800">with AI.</span>
           </h1>
         </div>
 
         <div class="reveal" style="transition-delay: 200ms;">
-          <p class="text-lg sm:text-xl text-open-gray max-w-2xl mx-auto leading-relaxed mb-6 relative">
+          <p class="text-lg sm:text-xl text-open-gray max-w-2xl mx-auto leading-relaxed mb-6">
             I went from a $120k software engineer to making over $200k, plus freelancing
             at $100 an hour. Before that I could only handle my full-time job. What changed?
             I learned how to build with AI. Open_ is a free, 12-week cohort that teaches
@@ -71,10 +72,10 @@ const COHORT_CAP = 100;
         </div>
 
         <div class="reveal" style="transition-delay: 400ms;">
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 relative">
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
             <a
               href="#sword"
-              class="glow-button inline-flex items-center gap-2 bg-open-accent text-open-black font-semibold px-8 py-3.5 rounded-xl text-base relative z-10"
+              class="magnetic glow-button inline-flex items-center gap-2 bg-open-accent text-open-black font-semibold px-8 py-3.5 rounded-xl text-base relative z-10"
             >
               Submit Your Sword →
             </a>
@@ -86,27 +87,27 @@ const COHORT_CAP = 100;
       </div>
     </section>
 
-    <!-- Stats bar -->
-    <section class="section-fade py-6 px-6">
+    <!-- Stats bar with animated counters -->
+    <section class="section-fade py-6 px-6 relative z-10">
       <div class="max-w-3xl mx-auto">
         <div class="glass rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-around gap-6 text-center">
-          <div>
-            <div class="text-3xl font-bold text-open-accent stat-number">12</div>
+          <div class="reveal">
+            <div class="text-3xl font-bold text-open-accent stat-number" data-count="12">0</div>
             <div class="text-xs text-open-gray uppercase tracking-wider mt-1">Weeks</div>
           </div>
           <div class="hidden sm:block w-px h-8 bg-white/10"></div>
-          <div>
-            <div class="text-3xl font-bold text-open-white stat-number">$0</div>
+          <div class="reveal">
+            <div class="text-3xl font-bold text-open-white" data-prefix="$" data-count="0">$0</div>
             <div class="text-xs text-open-gray uppercase tracking-wider mt-1">Cost</div>
           </div>
           <div class="hidden sm:block w-px h-8 bg-white/10"></div>
-          <div>
-            <div class="text-3xl font-bold text-open-white stat-number">100</div>
+          <div class="reveal">
+            <div class="text-3xl font-bold text-open-white stat-number" data-count="100">0</div>
             <div class="text-xs text-open-gray uppercase tracking-wider mt-1">Spots</div>
           </div>
           <div class="hidden sm:block w-px h-8 bg-white/10"></div>
-          <div>
-            <div class="text-3xl font-bold text-open-white stat-number">1</div>
+          <div class="reveal">
+            <div class="text-3xl font-bold text-open-white stat-number" data-count="1">0</div>
             <div class="text-xs text-open-gray uppercase tracking-wider mt-1">Shipped product</div>
           </div>
         </div>
@@ -195,7 +196,6 @@ const COHORT_CAP = 100;
           <p class="text-open-gray text-lg">10 weeks of content + 2 break weeks built in for catching up and not burning out.</p>
         </div>
         <div class="relative space-y-0">
-          <!-- Timeline line -->
           <div class="hidden sm:block absolute left-[7.5rem] top-0 bottom-0 w-px bg-gradient-to-b from-open-accent/50 via-white/5 to-open-accent/50"></div>
 
           <!-- Phase 1 -->
@@ -220,7 +220,6 @@ const COHORT_CAP = 100;
             </div>
           </div>
 
-          <!-- Break -->
           <div class="relative flex flex-col sm:flex-row gap-4 sm:gap-8 pb-10 reveal">
             <div class="sm:w-[7.5rem] shrink-0 text-right">
               <span class="text-open-gray font-mono text-xs uppercase tracking-wider">Week 4</span>
@@ -251,7 +250,6 @@ const COHORT_CAP = 100;
             </div>
           </div>
 
-          <!-- Break -->
           <div class="relative flex flex-col sm:flex-row gap-4 sm:gap-8 pb-10 reveal">
             <div class="sm:w-[7.5rem] shrink-0 text-right">
               <span class="text-open-gray font-mono text-xs uppercase tracking-wider">Week 9</span>
@@ -361,7 +359,6 @@ const COHORT_CAP = 100;
 
     <!-- The Sword -->
     <section id="sword" class="section-fade py-24 px-6 relative overflow-hidden">
-      <!-- Background glow -->
       <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div class="w-[600px] h-[600px] bg-open-accent/5 rounded-full blur-[150px] animate-pulse-slow"></div>
       </div>
@@ -395,7 +392,7 @@ const COHORT_CAP = 100;
               href={SWORD_FORM_URL}
               target="_blank"
               rel="noopener"
-              class="glow-button inline-flex items-center gap-2 bg-open-accent text-open-black font-semibold px-10 py-4 rounded-xl text-lg relative z-10"
+              class="magnetic glow-button inline-flex items-center gap-2 bg-open-accent text-open-black font-semibold px-10 py-4 rounded-xl text-lg relative z-10"
             >
               Submit Your Sword →
             </a>
@@ -450,61 +447,301 @@ const COHORT_CAP = 100;
           <p class="text-sm text-open-gray mt-1">Free. 12 weeks. Ship something real.</p>
         </div>
         <div class="flex gap-6 text-sm">
-          <a href={DISCORD_URL} target="_blank" rel="noopener" class="text-open-gray hover:text-open-white transition-colors">
-            Discord
-          </a>
-          <a href={TWITTER_URL} target="_blank" rel="noopener" class="text-open-gray hover:text-open-white transition-colors">
-            @joinopen
-          </a>
-          <a href="#sword" class="text-open-accent hover:text-orange-400 transition-colors">
-            Submit Your Sword
-          </a>
+          <a href={DISCORD_URL} target="_blank" rel="noopener" class="text-open-gray hover:text-open-white transition-colors">Discord</a>
+          <a href={TWITTER_URL} target="_blank" rel="noopener" class="text-open-gray hover:text-open-white transition-colors">@joinopen</a>
+          <a href="#sword" class="text-open-accent hover:text-orange-400 transition-colors">Submit Your Sword</a>
         </div>
       </div>
     </footer>
 
   </main>
 
-  <!-- Minimal JS: cursor spotlight, scroll reveal, glass tilt tracking -->
+  <!-- ==========================================
+       WEBGL METABALL SHADER + INTERACTION JS
+       ========================================== -->
   <script>
-    // Cursor spotlight
-    const spotlight = document.getElementById('cursor-spotlight');
-    if (spotlight && window.matchMedia('(pointer: fine)').matches) {
-      document.addEventListener('mousemove', (e) => {
-        spotlight.style.left = e.clientX + 'px';
-        spotlight.style.top = e.clientY + 'px';
-      });
-      document.addEventListener('mouseenter', () => spotlight.style.opacity = '1');
-      document.addEventListener('mouseleave', () => spotlight.style.opacity = '0');
+    // ---- WebGL Metaball Shader ----
+    const canvas = document.getElementById('hero-shader') as HTMLCanvasElement;
+    if (canvas) {
+      const gl = canvas.getContext('webgl', { alpha: true, antialias: false, premultipliedAlpha: false });
+      if (gl) {
+        // Vertex shader (fullscreen quad)
+        const vs = `attribute vec2 a_pos;void main(){gl_Position=vec4(a_pos,0,1);}`;
+
+        // Fragment shader: metaballs with smooth coloring
+        const fs = `
+precision mediump float;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+
+float metaball(vec2 p, vec2 c, float r) {
+  float d = length(p - c);
+  return r * r / (d * d + 0.001);
+}
+
+void main() {
+  vec2 uv = gl_FragCoord.xy / u_resolution;
+  vec2 p = (gl_FragCoord.xy - u_resolution * 0.5) / min(u_resolution.x, u_resolution.y);
+  float t = u_time * 0.3;
+
+  // 6 autonomous metaballs
+  float v = 0.0;
+  v += metaball(p, vec2(sin(t*0.7)*0.4, cos(t*0.6)*0.3), 0.18);
+  v += metaball(p, vec2(cos(t*0.5)*0.5, sin(t*0.8)*0.4), 0.15);
+  v += metaball(p, vec2(sin(t*0.9+2.0)*0.3, cos(t*0.4+1.0)*0.5), 0.20);
+  v += metaball(p, vec2(cos(t*0.6+4.0)*0.6, sin(t*0.7+3.0)*0.2), 0.12);
+  v += metaball(p, vec2(sin(t*0.4+5.0)*0.2, cos(t*0.9+2.0)*0.4), 0.16);
+  v += metaball(p, vec2(cos(t*0.8+1.0)*0.4, sin(t*0.5+4.0)*0.3), 0.14);
+
+  // Mouse-following metaball
+  vec2 mp = (u_mouse - u_resolution * 0.5) / min(u_resolution.x, u_resolution.y);
+  v += metaball(p, mp, 0.22);
+
+  // Color: black bg, orange glow for metaballs
+  float edge = smoothstep(0.8, 1.6, v);
+  float core = smoothstep(1.6, 2.8, v);
+
+  vec3 orange = vec3(0.976, 0.451, 0.086);  // #f97316
+  vec3 amber  = vec3(0.984, 0.573, 0.235);  // #fb923c
+
+  vec3 col = mix(orange, amber, core) * edge;
+
+  // Subtle chromatic shift
+  float r_shift = smoothstep(0.7, 1.5, v + 0.05);
+  float b_shift = smoothstep(0.9, 1.7, v - 0.05);
+  col.r = mix(col.r, orange.r, r_shift * 0.15);
+  col.b = mix(col.b, 0.3, b_shift * 0.08);
+
+  // Fade opacity so text is readable
+  float alpha = edge * 0.12 + core * 0.06;
+
+  gl_FragColor = vec4(col, alpha);
+}`;
+
+        function createShader(type: number, source: string) {
+          const s = gl!.createShader(type)!;
+          gl!.shaderSource(s, source);
+          gl!.compileShader(s);
+          return s;
+        }
+
+        const prog = gl.createProgram()!;
+        gl.attachShader(prog, createShader(gl.VERTEX_SHADER, vs));
+        gl.attachShader(prog, createShader(gl.FRAGMENT_SHADER, fs));
+        gl.linkProgram(prog);
+        gl.useProgram(prog);
+
+        // Fullscreen quad
+        const buf = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1,1,-1,-1,1,1,1]), gl.STATIC_DRAW);
+        const aPos = gl.getAttribLocation(prog, 'a_pos');
+        gl.enableVertexAttribArray(aPos);
+        gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+        const uTime = gl.getUniformLocation(prog, 'u_time');
+        const uRes = gl.getUniformLocation(prog, 'u_resolution');
+        const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+        let mouseX = 0, mouseY = 0;
+        let targetMouseX = 0, targetMouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+          targetMouseX = e.clientX * devicePixelRatio;
+          targetMouseY = (canvas.clientHeight - e.clientY) * devicePixelRatio;
+        });
+
+        function resize() {
+          const dpr = Math.min(devicePixelRatio, 2);
+          canvas.width = canvas.clientWidth * dpr;
+          canvas.height = canvas.clientHeight * dpr;
+          gl!.viewport(0, 0, canvas.width, canvas.height);
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        gl.enable(gl.BLEND);
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+        let startTime = performance.now();
+        let rafId: number;
+
+        function render() {
+          // Smooth mouse following
+          mouseX += (targetMouseX - mouseX) * 0.05;
+          mouseY += (targetMouseY - mouseY) * 0.05;
+
+          const t = (performance.now() - startTime) / 1000;
+          gl!.uniform1f(uTime, t);
+          gl!.uniform2f(uRes, canvas.width, canvas.height);
+          gl!.uniform2f(uMouse, mouseX, mouseY);
+          gl!.clearColor(0, 0, 0, 0);
+          gl!.clear(gl!.COLOR_BUFFER_BIT);
+          gl!.drawArrays(gl!.TRIANGLE_STRIP, 0, 4);
+          rafId = requestAnimationFrame(render);
+        }
+
+        // Only run when hero is visible
+        const heroObserver = new IntersectionObserver(([entry]) => {
+          if (entry.isIntersecting) {
+            startTime = performance.now();
+            render();
+          } else {
+            cancelAnimationFrame(rafId);
+          }
+        }, { threshold: 0 });
+        heroObserver.observe(canvas);
+      }
     }
 
-    // Scroll reveal
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
+    // ---- Custom Cursor ----
+    const cursor = document.getElementById('custom-cursor');
+    const cursorDot = cursor?.querySelector('.cursor-dot') as HTMLElement;
+    const cursorRing = cursor?.querySelector('.cursor-ring') as HTMLElement;
+    const spotlight = document.getElementById('cursor-spotlight');
+
+    if (cursor && window.matchMedia('(pointer: fine)').matches) {
+      let cx = 0, cy = 0, rx = 0, ry = 0;
+
+      document.addEventListener('mousemove', (e) => {
+        cx = e.clientX;
+        cy = e.clientY;
+        if (spotlight) {
+          spotlight.style.left = cx + 'px';
+          spotlight.style.top = cy + 'px';
+        }
+      });
+
+      // Ring follows with lag
+      function updateCursor() {
+        rx += (cx - rx) * 0.15;
+        ry += (cy - ry) * 0.15;
+        if (cursorDot) {
+          cursorDot.style.left = cx + 'px';
+          cursorDot.style.top = cy + 'px';
+        }
+        if (cursorRing) {
+          cursorRing.style.left = rx + 'px';
+          cursorRing.style.top = ry + 'px';
+        }
+        requestAnimationFrame(updateCursor);
+      }
+      updateCursor();
+
+      // Grow on interactive elements
+      document.querySelectorAll('a, button, summary, .glass').forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
+      });
+    } else if (cursor) {
+      cursor.style.display = 'none';
+      if (spotlight) spotlight.style.display = 'none';
+    }
+
+    // ---- Scroll Reveal ----
+    const revealObserver = new IntersectionObserver(
+      (entries) => entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed');
+          revealObserver.unobserve(e.target);
+        }
+      }),
       { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
     );
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => revealObserver.observe(el));
 
-    document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => {
-      // Don't hide hero elements on page load if they're already visible
-      observer.observe(el);
-    });
-
-    // Glass tilt: track mouse position for radial gradient
-    document.querySelectorAll('.glass-tilt').forEach((card) => {
+    // ---- Glass Tilt (mouse-tracking light) ----
+    document.querySelectorAll('.glass-tilt').forEach(card => {
       card.addEventListener('mousemove', (e) => {
-        const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width) * 100;
-        const y = ((e.clientY - rect.top) / rect.height) * 100;
-        (e.currentTarget as HTMLElement).style.setProperty('--mouse-x', x + '%');
-        (e.currentTarget as HTMLElement).style.setProperty('--mouse-y', y + '%');
+        const evt = e as MouseEvent;
+        const rect = (evt.currentTarget as HTMLElement).getBoundingClientRect();
+        const x = ((evt.clientX - rect.left) / rect.width) * 100;
+        const y = ((evt.clientY - rect.top) / rect.height) * 100;
+        (evt.currentTarget as HTMLElement).style.setProperty('--mouse-x', x + '%');
+        (evt.currentTarget as HTMLElement).style.setProperty('--mouse-y', y + '%');
       });
     });
+
+    // ---- Magnetic Buttons ----
+    document.querySelectorAll('.magnetic').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const evt = e as MouseEvent;
+        const rect = (evt.currentTarget as HTMLElement).getBoundingClientRect();
+        const x = evt.clientX - rect.left - rect.width / 2;
+        const y = evt.clientY - rect.top - rect.height / 2;
+        (evt.currentTarget as HTMLElement).style.transform = `translate(${x * 0.2}px, ${y * 0.2}px)`;
+      });
+      btn.addEventListener('mouseleave', (e) => {
+        (e.currentTarget as HTMLElement).style.transform = '';
+      });
+    });
+
+    // ---- Text Scramble ----
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%&*';
+    document.querySelectorAll('.scramble-text').forEach(el => {
+      const target = (el as HTMLElement).dataset.text || el.textContent || '';
+      const delay = parseInt((el as HTMLElement).dataset.delay || '0');
+      let frame = 0;
+      const totalFrames = 30;
+
+      // Start invisible
+      el.textContent = target.replace(/[^\s]/g, ' ');
+
+      setTimeout(() => {
+        const interval = setInterval(() => {
+          let result = '';
+          for (let i = 0; i < target.length; i++) {
+            if (target[i] === ' ') {
+              result += ' ';
+            } else if (frame / totalFrames > i / target.length) {
+              result += target[i];
+            } else {
+              result += chars[Math.floor(Math.random() * chars.length)];
+            }
+          }
+          el.textContent = result;
+          frame++;
+          if (frame > totalFrames) clearInterval(interval);
+        }, 30);
+      }, 300 + delay);
+    });
+
+    // ---- Animated Counters ----
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target as HTMLElement;
+        const target = parseInt(el.dataset.count || '0');
+        const prefix = el.dataset.prefix || '';
+        if (target === 0) { el.textContent = prefix + '0'; counterObserver.unobserve(el); return; }
+
+        const duration = 1500;
+        const start = performance.now();
+
+        function tick(now: number) {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+          const current = Math.round(eased * target);
+          el.textContent = prefix + current.toString();
+          if (progress < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+    // ---- Hero Parallax on scroll ----
+    const heroContent = document.querySelector('.hero-parallax') as HTMLElement;
+    if (heroContent && window.matchMedia('(pointer: fine)').matches) {
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        heroContent.style.transform = `translateY(${y * 0.15}px)`;
+        heroContent.style.opacity = Math.max(1 - y / 600, 0).toString();
+      }, { passive: true });
+    }
   </script>
 </Base>
