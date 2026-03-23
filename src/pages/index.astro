@@ -12,15 +12,14 @@ const COHORT_CAP = 100;
 ---
 
 <Base title={title} description={description}>
-  <!-- Skip link for keyboard accessibility -->
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:bg-open-accent focus:text-open-black focus:px-4 focus:py-2 focus:rounded focus:z-[60]">
     Skip to content
   </a>
 
   <!-- Nav -->
-  <nav class="fixed top-0 w-full z-50 bg-open-black/80 backdrop-blur-sm border-b border-white/5">
+  <nav class="fixed top-0 w-full z-50 glass-strong">
     <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-      <a href="#" class="text-xl font-bold tracking-tight">Open_</a>
+      <a href="#" class="text-xl font-bold tracking-tight">Open<span class="text-open-accent">_</span></a>
       <a
         href="#sword"
         class="text-sm font-medium bg-open-accent/10 text-open-accent px-4 py-2 rounded-lg hover:bg-open-accent/20 transition-colors"
@@ -32,14 +31,17 @@ const COHORT_CAP = 100;
 
   <main id="main-content">
 
-    <!-- Hero — full width, centered -->
-    <section class="pt-36 pb-24 px-6">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-8">
-          Learn to build real things<br />
-          <span class="text-open-accent">with AI.</span>
+    <!-- Hero -->
+    <section class="hero-glow pt-36 pb-28 px-6 dot-grid">
+      <div class="max-w-4xl mx-auto text-center relative">
+        <!-- Floating accent orb -->
+        <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-open-accent/5 rounded-full blur-[100px] animate-pulse-slow pointer-events-none"></div>
+
+        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-8 relative">
+          <span class="gradient-text">Learn to build real things</span><br />
+          <span class="accent-gradient-text">with AI.</span>
         </h1>
-        <p class="text-lg sm:text-xl text-open-gray max-w-2xl mx-auto leading-relaxed mb-6">
+        <p class="text-lg sm:text-xl text-open-gray max-w-2xl mx-auto leading-relaxed mb-6 relative">
           I went from a $120k software engineer to making over $200k — plus freelancing
           at $70 an hour. Before that I could only handle my full-time job. What changed?
           I learned how to build with AI. Open_ is a free, 12-week cohort that teaches
@@ -47,38 +49,38 @@ const COHORT_CAP = 100;
           <a href="https://leonnoel.com/100devs/" target="_blank" rel="noopener" class="underline hover:text-open-white transition-colors">100Devs</a>,
           but for the AI era.
         </p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 relative">
           <a
             href="#sword"
-            class="inline-flex items-center gap-2 bg-open-accent text-open-black font-semibold px-8 py-3.5 rounded-lg hover:bg-orange-400 transition-colors text-base"
+            class="glow-button inline-flex items-center gap-2 bg-open-accent text-open-black font-semibold px-8 py-3.5 rounded-lg text-base relative z-10"
           >
             Submit Your Sword →
           </a>
           <span class="text-sm text-open-gray">
-            Cohort 1 starts <strong class="text-open-white">Summer 2026</strong>. US only.
+            Cohort 1 · <strong class="text-open-white">Summer 2026</strong> · US only
           </span>
         </div>
       </div>
     </section>
 
-    <!-- Who it's for — wider grid -->
-    <section class="py-20 px-6 border-t border-white/5">
+    <!-- Who it's for -->
+    <section class="section-fade py-20 px-6">
       <div class="max-w-5xl mx-auto">
         <h2 class="text-3xl font-bold mb-10 text-center">Who this is for</h2>
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          <div class="bg-white/[0.03] border border-white/10 rounded-xl p-6 hover:border-open-accent/30 transition-colors">
+          <div class="glass rounded-xl p-6">
             <h3 class="font-semibold text-open-accent mb-3 text-lg">Employees</h3>
             <p class="text-sm text-open-gray leading-relaxed">You want to build AI tools for your job, automate the boring stuff, or build something on the side that could become your way out.</p>
           </div>
-          <div class="bg-white/[0.03] border border-white/10 rounded-xl p-6 hover:border-open-accent/30 transition-colors">
+          <div class="glass rounded-xl p-6">
             <h3 class="font-semibold text-open-accent mb-3 text-lg">Freelancers</h3>
             <p class="text-sm text-open-gray leading-relaxed">You already do client work. You want to add AI-powered tools or services to what you offer — things you couldn't build before.</p>
           </div>
-          <div class="bg-white/[0.03] border border-white/10 rounded-xl p-6 hover:border-open-accent/30 transition-colors">
+          <div class="glass rounded-xl p-6">
             <h3 class="font-semibold text-open-accent mb-3 text-lg">Business owners</h3>
             <p class="text-sm text-open-gray leading-relaxed">You've been paying other people to build tools you need. AI makes it possible to build them yourself. This teaches you how.</p>
           </div>
-          <div class="bg-white/[0.03] border border-white/10 rounded-xl p-6 hover:border-open-accent/30 transition-colors">
+          <div class="glass rounded-xl p-6">
             <h3 class="font-semibold text-open-accent mb-3 text-lg">Aspiring founders</h3>
             <p class="text-sm text-open-gray leading-relaxed">You have an idea but haven't built it yet. By the end you'll have a shipped product with actual users — not a pitch deck.</p>
           </div>
@@ -86,37 +88,37 @@ const COHORT_CAP = 100;
       </div>
     </section>
 
-    <!-- Schedule — alternating layout -->
-    <section class="py-20 px-6 bg-white/[0.02] border-t border-b border-white/5">
+    <!-- Schedule -->
+    <section class="section-fade py-20 px-6 dot-grid">
       <div class="max-w-3xl mx-auto">
         <h2 class="text-3xl font-bold mb-10 text-center">The schedule</h2>
         <div class="grid sm:grid-cols-2 gap-4">
-          <div class="bg-open-black/50 border border-white/10 rounded-xl p-5">
+          <div class="glass rounded-xl p-5">
             <span class="text-open-accent font-mono text-xs tracking-wider uppercase">Tuesday</span>
             <p class="text-open-white font-medium mt-2">2-hour live session on Twitch</p>
             <p class="text-sm text-open-gray mt-1">New concepts, live building, questions welcome.</p>
           </div>
-          <div class="bg-open-black/50 border border-white/10 rounded-xl p-5">
+          <div class="glass rounded-xl p-5">
             <span class="text-open-accent font-mono text-xs tracking-wider uppercase">Thursday</span>
             <p class="text-open-white font-medium mt-2">2-hour live session on Twitch</p>
             <p class="text-sm text-open-gray mt-1">Deeper dives, working on projects together.</p>
           </div>
-          <div class="bg-open-black/50 border border-white/10 rounded-xl p-5">
+          <div class="glass rounded-xl p-5">
             <span class="text-open-accent font-mono text-xs tracking-wider uppercase">Sunday</span>
             <p class="text-open-white font-medium mt-2">Office hours</p>
             <p class="text-sm text-open-gray mt-1">Bring whatever you're stuck on. Get help from me and the cohort.</p>
           </div>
-          <div class="bg-open-black/50 border border-white/10 rounded-xl p-5">
+          <div class="glass rounded-xl p-5">
             <span class="text-open-accent font-mono text-xs tracking-wider uppercase">24/7</span>
             <p class="text-open-white font-medium mt-2">Discord</p>
-            <p class="text-sm text-open-gray mt-1">Home base. You'll be in a Crew of 5–6 people — your accountability group for the whole program.</p>
+            <p class="text-sm text-open-gray mt-1">Home base. You'll be in a Crew of 5–6 people — your accountability group.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 12-week structure — timeline style -->
-    <section class="py-20 px-6">
+    <!-- 12-week structure -->
+    <section class="section-fade py-20 px-6">
       <div class="max-w-4xl mx-auto">
         <div class="text-center mb-12">
           <h2 class="text-3xl font-bold mb-2">12 weeks. 3 phases.</h2>
@@ -124,25 +126,27 @@ const COHORT_CAP = 100;
         </div>
         <div class="relative space-y-0">
           <!-- Timeline line -->
-          <div class="hidden sm:block absolute left-[7.5rem] top-0 bottom-0 w-px bg-white/10"></div>
+          <div class="hidden sm:block absolute left-[7.5rem] top-0 bottom-0 w-px bg-gradient-to-b from-open-accent/40 via-white/10 to-open-accent/40"></div>
 
           <!-- Phase 1 -->
           <div class="relative flex flex-col sm:flex-row gap-4 sm:gap-8 pb-10">
             <div class="sm:w-[7.5rem] shrink-0 text-right">
               <span class="text-open-accent font-mono text-sm font-medium">Weeks 1–3</span>
             </div>
-            <div class="sm:pl-8">
-              <h3 class="text-xl font-semibold mb-3">Foundations</h3>
-              <p class="text-open-gray text-sm leading-relaxed mb-3">
-                Week 1 isn't code — it's how to think. Mental health, scheduling, problem
-                decomposition. You learn to break down what you want before you touch any AI tool.
-                Week 2 you learn the process: talk through the idea, write a spec, poke holes in it,
-                build one piece at a time.
-              </p>
-              <p class="text-open-gray text-sm leading-relaxed">
-                Week 3 is a hackathon. You and your Crew build something together —
-                spec it, stress-test it, ship it. Every team presents what they built.
-              </p>
+            <div class="sm:pl-8 timeline-dot">
+              <div class="gradient-border rounded-xl p-6">
+                <h3 class="text-xl font-semibold mb-3">Foundations</h3>
+                <p class="text-open-gray text-sm leading-relaxed mb-3">
+                  Week 1 isn't code — it's how to think. Mental health, scheduling, problem
+                  decomposition. You learn to break down what you want before you touch any AI tool.
+                  Week 2 you learn the process: talk through the idea, write a spec, poke holes in it,
+                  build one piece at a time.
+                </p>
+                <p class="text-open-gray text-sm leading-relaxed">
+                  Week 3 is a hackathon. You and your Crew build something together —
+                  spec it, stress-test it, ship it. Every team presents what they built.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -151,8 +155,8 @@ const COHORT_CAP = 100;
             <div class="sm:w-[7.5rem] shrink-0 text-right">
               <span class="text-open-gray font-mono text-xs uppercase tracking-wider">Week 4</span>
             </div>
-            <div class="sm:pl-8">
-              <p class="text-open-gray text-sm italic">Break — catch up, breathe, reflect.</p>
+            <div class="sm:pl-8 timeline-dot timeline-dot-dim">
+              <p class="text-open-gray text-sm italic py-3">Break — catch up, breathe, reflect.</p>
             </div>
           </div>
 
@@ -161,17 +165,19 @@ const COHORT_CAP = 100;
             <div class="sm:w-[7.5rem] shrink-0 text-right">
               <span class="text-open-accent font-mono text-sm font-medium">Weeks 5–8</span>
             </div>
-            <div class="sm:pl-8">
-              <h3 class="text-xl font-semibold mb-3">Build your own</h3>
-              <p class="text-open-gray text-sm leading-relaxed mb-3">
-                Pick something you want to exist. Could be a tool for your job, a side project,
-                a business idea — whatever. Spec it, get it reviewed by your Crew, and build.
-              </p>
-              <p class="text-open-gray text-sm leading-relaxed">
-                Week 8 I teach freelancing — not theory, the actual mechanics. My proposal
-                template, how I find clients, how I price at $70/hr. You can start freelancing
-                before the cohort even ends.
-              </p>
+            <div class="sm:pl-8 timeline-dot">
+              <div class="gradient-border rounded-xl p-6">
+                <h3 class="text-xl font-semibold mb-3">Build your own</h3>
+                <p class="text-open-gray text-sm leading-relaxed mb-3">
+                  Pick something you want to exist. Could be a tool for your job, a side project,
+                  a business idea — whatever. Spec it, get it reviewed by your Crew, and build.
+                </p>
+                <p class="text-open-gray text-sm leading-relaxed">
+                  Week 8 I teach freelancing — not theory, the actual mechanics. My proposal
+                  template, how I find clients, how I price at $70/hr. You can start freelancing
+                  before the cohort even ends.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -180,8 +186,8 @@ const COHORT_CAP = 100;
             <div class="sm:w-[7.5rem] shrink-0 text-right">
               <span class="text-open-gray font-mono text-xs uppercase tracking-wider">Week 9</span>
             </div>
-            <div class="sm:pl-8">
-              <p class="text-open-gray text-sm italic">Break — rest up before the final push.</p>
+            <div class="sm:pl-8 timeline-dot timeline-dot-dim">
+              <p class="text-open-gray text-sm italic py-3">Break — rest up before the final push.</p>
             </div>
           </div>
 
@@ -190,41 +196,43 @@ const COHORT_CAP = 100;
             <div class="sm:w-[7.5rem] shrink-0 text-right">
               <span class="text-open-accent font-mono text-sm font-medium">Weeks 10–12</span>
             </div>
-            <div class="sm:pl-8">
-              <h3 class="text-xl font-semibold mb-3">Ship it</h3>
-              <p class="text-open-gray text-sm leading-relaxed mb-3">
-                Polish, deploy, launch. Week 10 I show you how I used these skills to go from
-                $120k to $200k+ at my day job. Week 11 is launch week — everyone ships publicly.
-              </p>
-              <p class="text-open-gray text-sm leading-relaxed">
-                Not everyone will ship by Week 12. That's okay. The cohort ends, but the Discord
-                doesn't. The process is yours forever and the community keeps going. You either
-                ship during or you ship after — the only way to fail is to stop.
-              </p>
+            <div class="sm:pl-8 timeline-dot">
+              <div class="gradient-border rounded-xl p-6">
+                <h3 class="text-xl font-semibold mb-3">Ship it</h3>
+                <p class="text-open-gray text-sm leading-relaxed mb-3">
+                  Polish, deploy, launch. Week 10 I show you how I used these skills to go from
+                  $120k to $200k+ at my day job. Week 11 is launch week — everyone ships publicly.
+                </p>
+                <p class="text-open-gray text-sm leading-relaxed">
+                  Not everyone will ship by Week 12. That's okay. The cohort ends, but the Discord
+                  doesn't. The process is yours forever and the community keeps going. You either
+                  ship during or you ship after — the only way to fail is to stop.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- What this is NOT — full-width accent -->
-    <section class="py-20 px-6 bg-white/[0.02] border-t border-b border-white/5">
+    <!-- What this is NOT -->
+    <section class="section-fade py-20 px-6 dot-grid">
       <div class="max-w-3xl mx-auto">
         <h2 class="text-3xl font-bold mb-10 text-center">What this is <span class="text-open-accent">not</span></h2>
         <div class="grid sm:grid-cols-2 gap-4">
-          <div class="flex items-start gap-3 bg-open-black/50 border border-white/10 rounded-xl p-5">
+          <div class="glass rounded-xl p-5 flex items-start gap-3">
             <span class="text-open-accent text-lg mt-0.5 shrink-0">✕</span>
             <span class="text-open-gray text-sm leading-relaxed">Not a coding bootcamp. You don't need to learn programming languages. You need to know how to use an IDE as a text editor.</span>
           </div>
-          <div class="flex items-start gap-3 bg-open-black/50 border border-white/10 rounded-xl p-5">
+          <div class="glass rounded-xl p-5 flex items-start gap-3">
             <span class="text-open-accent text-lg mt-0.5 shrink-0">✕</span>
             <span class="text-open-gray text-sm leading-relaxed">Not a prompt engineering course. Learning to "talk to ChatGPT better" isn't what this is.</span>
           </div>
-          <div class="flex items-start gap-3 bg-open-black/50 border border-white/10 rounded-xl p-5">
+          <div class="glass rounded-xl p-5 flex items-start gap-3">
             <span class="text-open-accent text-lg mt-0.5 shrink-0">✕</span>
             <span class="text-open-gray text-sm leading-relaxed">Not a get-rich-quick thing. This is 12 weeks of actual work. If you want shortcuts, this isn't it.</span>
           </div>
-          <div class="flex items-start gap-3 bg-open-black/50 border border-white/10 rounded-xl p-5">
+          <div class="glass rounded-xl p-5 flex items-start gap-3">
             <span class="text-open-accent text-lg mt-0.5 shrink-0">✕</span>
             <span class="text-open-gray text-sm leading-relaxed">Not passive. You can't just watch the streams and get the value. You have to build.</span>
           </div>
@@ -233,35 +241,35 @@ const COHORT_CAP = 100;
     </section>
 
     <!-- FAQ -->
-    <section class="py-20 px-6">
+    <section class="section-fade py-20 px-6">
       <div class="max-w-3xl mx-auto">
         <h2 class="text-3xl font-bold mb-10 text-center">Questions you probably have</h2>
-        <div class="space-y-6">
-          <details class="group border border-white/10 rounded-xl overflow-hidden">
-            <summary class="flex items-center justify-between cursor-pointer p-5 hover:bg-white/[0.02] transition-colors">
+        <div class="space-y-4">
+          <details class="group glass rounded-xl overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer p-5">
               <span class="font-semibold">Do I need to know how to code?</span>
-              <span class="text-open-gray group-open:rotate-45 transition-transform text-xl">+</span>
+              <span class="text-open-accent group-open:rotate-45 transition-transform duration-200 text-xl leading-none">+</span>
             </summary>
             <p class="px-5 pb-5 text-sm text-open-gray leading-relaxed">No. You need to be comfortable using a computer and willing to learn how a text editor works. The whole point of this cohort is that AI does the coding — you learn how to think clearly and direct it.</p>
           </details>
-          <details class="group border border-white/10 rounded-xl overflow-hidden">
-            <summary class="flex items-center justify-between cursor-pointer p-5 hover:bg-white/[0.02] transition-colors">
+          <details class="group glass rounded-xl overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer p-5">
               <span class="font-semibold">How much time per week?</span>
-              <span class="text-open-gray group-open:rotate-45 transition-transform text-xl">+</span>
+              <span class="text-open-accent group-open:rotate-45 transition-transform duration-200 text-xl leading-none">+</span>
             </summary>
             <p class="px-5 pb-5 text-sm text-open-gray leading-relaxed">Plan for about 10 hours. That's 4 hours of live sessions (Tues + Thurs), office hours on Sunday, and daily homework. If you can't do 10, you can still get value — but the people who build the most are the ones who show up consistently.</p>
           </details>
-          <details class="group border border-white/10 rounded-xl overflow-hidden">
-            <summary class="flex items-center justify-between cursor-pointer p-5 hover:bg-white/[0.02] transition-colors">
+          <details class="group glass rounded-xl overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer p-5">
               <span class="font-semibold">What if I can't finish in 12 weeks?</span>
-              <span class="text-open-gray group-open:rotate-45 transition-transform text-xl">+</span>
+              <span class="text-open-accent group-open:rotate-45 transition-transform duration-200 text-xl leading-none">+</span>
             </summary>
             <p class="px-5 pb-5 text-sm text-open-gray leading-relaxed">That's what the break weeks are for — and it's also why the Discord stays open after the cohort ends. You either ship during or you ship after. The process and the community are yours to keep.</p>
           </details>
-          <details class="group border border-white/10 rounded-xl overflow-hidden">
-            <summary class="flex items-center justify-between cursor-pointer p-5 hover:bg-white/[0.02] transition-colors">
+          <details class="group glass rounded-xl overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer p-5">
               <span class="font-semibold">Is this really free?</span>
-              <span class="text-open-gray group-open:rotate-45 transition-transform text-xl">+</span>
+              <span class="text-open-accent group-open:rotate-45 transition-transform duration-200 text-xl leading-none">+</span>
             </summary>
             <p class="px-5 pb-5 text-sm text-open-gray leading-relaxed">Yes. No hidden fees, no upsell, no premium tier. 100Devs was free and it changed my life. This is me paying that forward.</p>
           </details>
@@ -269,9 +277,14 @@ const COHORT_CAP = 100;
       </div>
     </section>
 
-    <!-- The Sword — accent section -->
-    <section id="sword" class="py-20 px-6 bg-white/[0.02] border-t border-b border-white/5">
-      <div class="max-w-3xl mx-auto text-center">
+    <!-- The Sword -->
+    <section id="sword" class="section-fade py-24 px-6 dot-grid relative">
+      <!-- Background glow -->
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div class="w-[500px] h-[500px] bg-open-accent/5 rounded-full blur-[120px]"></div>
+      </div>
+
+      <div class="max-w-3xl mx-auto text-center relative">
         <h2 class="text-3xl font-bold mb-6">The Sword</h2>
         <div class="text-left max-w-xl mx-auto">
           <p class="text-open-gray mb-4 leading-relaxed">
@@ -296,43 +309,45 @@ const COHORT_CAP = 100;
           href={SWORD_FORM_URL}
           target="_blank"
           rel="noopener"
-          class="inline-flex items-center gap-2 bg-open-accent text-open-black font-semibold px-8 py-3.5 rounded-lg hover:bg-orange-400 transition-colors text-base"
+          class="glow-button inline-flex items-center gap-2 bg-open-accent text-open-black font-semibold px-8 py-4 rounded-xl text-base relative z-10"
         >
           Submit Your Sword →
         </a>
-        <p class="text-xs text-open-gray mt-4">
+        <p class="text-xs text-open-gray mt-5">
           Cohort 1 is capped at {COHORT_CAP} people. US only for now.
         </p>
       </div>
     </section>
 
     <!-- About Cnid -->
-    <section class="py-20 px-6">
+    <section class="section-fade py-20 px-6">
       <div class="max-w-3xl mx-auto">
         <h2 class="text-3xl font-bold mb-8 text-center">Who's running this</h2>
-        <div class="text-open-gray space-y-4 leading-relaxed">
-          <p>
-            I'm Cnid. Senior software engineer. I already knew how to code, but
-            <a href="https://leonnoel.com/100devs/" target="_blank" rel="noopener" class="underline hover:text-open-white transition-colors">100Devs</a>
-            made me a better engineer. Leon, thank you for everything you've done
-            for me and everyone else. Open_ is me trying to pay that forward for the AI era.
-          </p>
-          <p>
-            I've been building with AI since ChatGPT 3.5 dropped. And like most people,
-            I started by just throwing ideas at it and seeing what came back. That works for
-            small stuff. The second you try to build something real, it falls apart.
-          </p>
-          <p>
-            So I stopped doing that. Now I spend most of my time before I write any code —
-            just talking through the idea with AI, writing down what it should actually do,
-            poking holes in the plan until it's solid. Then I build it one piece at a time.
-            I've shipped a bunch of stuff this way. This site was built this way.
-            It's not magic, it's a process. That's what I'm teaching.
-          </p>
-          <p>
-            Why is this free? Because 100Devs was free and it changed everything for me.
-            That's it. No upsell, no premium tier, no catch.
-          </p>
+        <div class="gradient-border rounded-xl p-8">
+          <div class="text-open-gray space-y-4 leading-relaxed relative">
+            <p>
+              I'm Cnid. Senior software engineer. I already knew how to code, but
+              <a href="https://leonnoel.com/100devs/" target="_blank" rel="noopener" class="underline hover:text-open-white transition-colors">100Devs</a>
+              made me a better engineer. Leon, thank you for everything you've done
+              for me and everyone else. Open_ is me trying to pay that forward for the AI era.
+            </p>
+            <p>
+              I've been building with AI since ChatGPT 3.5 dropped. And like most people,
+              I started by just throwing ideas at it and seeing what came back. That works for
+              small stuff. The second you try to build something real, it falls apart.
+            </p>
+            <p>
+              So I stopped doing that. Now I spend most of my time before I write any code —
+              just talking through the idea with AI, writing down what it should actually do,
+              poking holes in the plan until it's solid. Then I build it one piece at a time.
+              I've shipped a bunch of stuff this way. This site was built this way.
+              It's not magic, it's a process. That's what I'm teaching.
+            </p>
+            <p>
+              Why is this free? Because 100Devs was free and it changed everything for me.
+              That's it. No upsell, no premium tier, no catch.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -341,7 +356,7 @@ const COHORT_CAP = 100;
     <footer class="py-12 px-6 border-t border-white/5">
       <div class="max-w-5xl mx-auto flex flex-col sm:flex-row gap-6 items-start sm:items-center justify-between">
         <div>
-          <p class="font-bold text-lg">Open_</p>
+          <p class="font-bold text-lg">Open<span class="text-open-accent">_</span></p>
           <p class="text-sm text-open-gray mt-1">Free. 12 weeks. Ship something real.</p>
         </div>
         <div class="flex gap-6 text-sm">

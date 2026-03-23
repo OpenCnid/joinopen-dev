@@ -18,3 +18,236 @@ html {
 body {
   @apply bg-open-black text-open-white font-sans antialiased;
 }
+
+/* ============================================
+   LIQUID GLASS
+   ============================================ */
+
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: all 0.3s ease;
+}
+
+.glass:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(249, 115, 22, 0.25);
+  box-shadow: 0 0 30px rgba(249, 115, 22, 0.05),
+              inset 0 0 30px rgba(255, 255, 255, 0.02);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ============================================
+   GRADIENT BORDERS (animated)
+   ============================================ */
+
+.gradient-border {
+  position: relative;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(249, 115, 22, 0.3),
+    rgba(255, 255, 255, 0.05),
+    rgba(249, 115, 22, 0.15),
+    rgba(255, 255, 255, 0.05)
+  );
+  background-size: 300% 300%;
+  animation: gradient-shift 8s ease infinite;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ============================================
+   GLOW EFFECTS
+   ============================================ */
+
+.glow-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.glow-button::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, #f97316, #fb923c, #f97316);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  filter: blur(12px);
+  transition: opacity 0.3s ease;
+}
+
+.glow-button:hover::after {
+  opacity: 0.6;
+}
+
+.glow-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(249, 115, 22, 0.3);
+}
+
+/* ============================================
+   BACKGROUND EFFECTS
+   ============================================ */
+
+.hero-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-glow::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 60%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(249, 115, 22, 0.08) 0%,
+    rgba(249, 115, 22, 0.03) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.dot-grid {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ============================================
+   TEXT EFFECTS
+   ============================================ */
+
+.gradient-text {
+  background: linear-gradient(135deg, #fafafa 0%, #8a8a8a 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.accent-gradient-text {
+  background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #f97316 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 3s ease infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 200% center; }
+}
+
+/* ============================================
+   SECTION DIVIDERS
+   ============================================ */
+
+.section-fade {
+  position: relative;
+}
+
+.section-fade::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(249, 115, 22, 0.3),
+    transparent
+  );
+}
+
+/* ============================================
+   TIMELINE
+   ============================================ */
+
+.timeline-dot {
+  position: relative;
+}
+
+.timeline-dot::before {
+  content: '';
+  position: absolute;
+  left: -4px;
+  top: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f97316;
+  box-shadow: 0 0 10px rgba(249, 115, 22, 0.4);
+}
+
+.timeline-dot-dim::before {
+  background: #8a8a8a;
+  box-shadow: none;
+}
+
+/* ============================================
+   FAQ
+   ============================================ */
+
+details summary::-webkit-details-marker {
+  display: none;
+}
+
+details summary {
+  list-style: none;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
