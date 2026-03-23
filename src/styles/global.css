@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --color-open-black: #0a0a0a;
+  --color-open-white: #fafafa;
+  --color-open-gray: #8a8a8a;
+  --color-open-gray-light: #e5e5e5;
+  --color-open-accent: #f97316;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-open-black text-open-white font-sans antialiased;
+}
