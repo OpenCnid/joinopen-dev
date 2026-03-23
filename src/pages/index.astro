@@ -16,13 +16,16 @@ const COHORT_CAP = 100;
     Skip to content
   </a>
 
+  <!-- Cursor spotlight (desktop only) -->
+  <div id="cursor-spotlight" class="cursor-spotlight" aria-hidden="true"></div>
+
   <!-- Nav -->
-  <nav class="fixed top-0 w-full z-50 glass-strong">
+  <nav class="fixed top-0 w-full z-50 glass-nav">
     <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
       <a href="#" class="text-xl font-bold tracking-tight">Open<span class="text-open-accent">_</span></a>
       <a
         href="#sword"
-        class="text-sm font-medium bg-open-accent/10 text-open-accent px-4 py-2 rounded-lg hover:bg-open-accent/20 transition-colors"
+        class="glow-button text-sm font-medium bg-open-accent/10 text-open-accent px-4 py-2 rounded-lg relative z-10"
       >
         Submit Your Sword →
       </a>
@@ -32,33 +35,80 @@ const COHORT_CAP = 100;
   <main id="main-content">
 
     <!-- Hero -->
-    <section class="hero-glow pt-36 pb-28 px-6 dot-grid">
-      <div class="max-w-4xl mx-auto text-center relative">
-        <!-- Floating accent orb -->
-        <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-open-accent/5 rounded-full blur-[100px] animate-pulse-slow pointer-events-none"></div>
+    <section class="aurora pt-36 pb-28 px-6 relative">
+      <!-- Particles -->
+      <div class="particles" aria-hidden="true">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+      </div>
 
-        <h1 class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-8 relative">
-          <span class="gradient-text">Learn to build real things</span><br />
-          <span class="accent-gradient-text">with AI.</span>
-        </h1>
-        <p class="text-lg sm:text-xl text-open-gray max-w-2xl mx-auto leading-relaxed mb-6 relative">
-          I went from a $120k software engineer to making over $200k, plus freelancing
-          at $100 an hour. Before that I could only handle my full-time job. What changed?
-          I learned how to build with AI. Open_ is a free, 12-week cohort that teaches
-          you how to do what I did. Think
-          <a href="https://leonnoel.com/100devs/" target="_blank" rel="noopener" class="underline hover:text-open-white transition-colors">100Devs</a>,
-          but for the AI era.
-        </p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 relative">
-          <a
-            href="#sword"
-            class="glow-button inline-flex items-center gap-2 bg-open-accent text-open-black font-semibold px-8 py-3.5 rounded-lg text-base relative z-10"
-          >
-            Submit Your Sword →
-          </a>
-          <span class="text-sm text-open-gray">
-            Cohort 1 · <strong class="text-open-white">Summer 2026</strong> · US only
-          </span>
+      <div class="max-w-4xl mx-auto text-center relative z-10">
+        <!-- Floating orb -->
+        <div class="absolute -top-20 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-open-accent/4 rounded-full blur-[120px] animate-pulse-slow pointer-events-none"></div>
+
+        <div class="reveal">
+          <h1 class="text-5xl sm:text-6xl lg:text-8xl font-bold tracking-tight leading-[1.05] mb-8 relative">
+            <span class="gradient-text">Learn to build<br />real things</span><br />
+            <span class="accent-gradient-text">with AI.</span>
+          </h1>
+        </div>
+
+        <div class="reveal" style="transition-delay: 200ms;">
+          <p class="text-lg sm:text-xl text-open-gray max-w-2xl mx-auto leading-relaxed mb-6 relative">
+            I went from a $120k software engineer to making over $200k, plus freelancing
+            at $100 an hour. Before that I could only handle my full-time job. What changed?
+            I learned how to build with AI. Open_ is a free, 12-week cohort that teaches
+            you how to do what I did. Think
+            <a href="https://leonnoel.com/100devs/" target="_blank" rel="noopener" class="underline decoration-open-accent/40 underline-offset-4 hover:text-open-white hover:decoration-open-accent transition-all">100Devs</a>,
+            but for the AI era.
+          </p>
+        </div>
+
+        <div class="reveal" style="transition-delay: 400ms;">
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10 relative">
+            <a
+              href="#sword"
+              class="glow-button inline-flex items-center gap-2 bg-open-accent text-open-black font-semibold px-8 py-3.5 rounded-xl text-base relative z-10"
+            >
+              Submit Your Sword →
+            </a>
+            <span class="text-sm text-open-gray">
+              Cohort 1 · <strong class="text-open-white">Summer 2026</strong> · US only
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats bar -->
+    <section class="section-fade py-6 px-6">
+      <div class="max-w-3xl mx-auto">
+        <div class="glass rounded-2xl p-6 flex flex-col sm:flex-row items-center justify-around gap-6 text-center">
+          <div>
+            <div class="text-3xl font-bold text-open-accent stat-number">12</div>
+            <div class="text-xs text-open-gray uppercase tracking-wider mt-1">Weeks</div>
+          </div>
+          <div class="hidden sm:block w-px h-8 bg-white/10"></div>
+          <div>
+            <div class="text-3xl font-bold text-open-white stat-number">$0</div>
+            <div class="text-xs text-open-gray uppercase tracking-wider mt-1">Cost</div>
+          </div>
+          <div class="hidden sm:block w-px h-8 bg-white/10"></div>
+          <div>
+            <div class="text-3xl font-bold text-open-white stat-number">100</div>
+            <div class="text-xs text-open-gray uppercase tracking-wider mt-1">Spots</div>
+          </div>
+          <div class="hidden sm:block w-px h-8 bg-white/10"></div>
+          <div>
+            <div class="text-3xl font-bold text-open-white stat-number">1</div>
+            <div class="text-xs text-open-gray uppercase tracking-wider mt-1">Shipped product</div>
+          </div>
         </div>
       </div>
     </section>
@@ -66,21 +116,27 @@ const COHORT_CAP = 100;
     <!-- Who it's for -->
     <section class="section-fade py-20 px-6">
       <div class="max-w-5xl mx-auto">
-        <h2 class="text-3xl font-bold mb-10 text-center">Who this is for</h2>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          <div class="glass rounded-xl p-6">
+        <div class="reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-center">Who this is for</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 reveal-stagger reveal">
+          <div class="glass glass-tilt rounded-xl p-6">
+            <div class="text-2xl mb-3">⚡</div>
             <h3 class="font-semibold text-open-accent mb-3 text-lg">Employees</h3>
             <p class="text-sm text-open-gray leading-relaxed">You want to build AI tools for your job, automate the boring stuff, or build something on the side that could become your way out.</p>
           </div>
-          <div class="glass rounded-xl p-6">
+          <div class="glass glass-tilt rounded-xl p-6">
+            <div class="text-2xl mb-3">🛠</div>
             <h3 class="font-semibold text-open-accent mb-3 text-lg">Freelancers</h3>
             <p class="text-sm text-open-gray leading-relaxed">You already do client work. You want to add AI-powered tools or services to what you offer. Things you couldn't build before.</p>
           </div>
-          <div class="glass rounded-xl p-6">
+          <div class="glass glass-tilt rounded-xl p-6">
+            <div class="text-2xl mb-3">📈</div>
             <h3 class="font-semibold text-open-accent mb-3 text-lg">Business owners</h3>
             <p class="text-sm text-open-gray leading-relaxed">You've been paying other people to build tools you need. AI makes it possible to build them yourself. This teaches you how.</p>
           </div>
-          <div class="glass rounded-xl p-6">
+          <div class="glass glass-tilt rounded-xl p-6">
+            <div class="text-2xl mb-3">🚀</div>
             <h3 class="font-semibold text-open-accent mb-3 text-lg">Aspiring founders</h3>
             <p class="text-sm text-open-gray leading-relaxed">You have an idea but haven't built it yet. By the end you'll have a shipped product with actual users. Not a pitch deck.</p>
           </div>
@@ -91,26 +147,40 @@ const COHORT_CAP = 100;
     <!-- Schedule -->
     <section class="section-fade py-20 px-6 dot-grid">
       <div class="max-w-3xl mx-auto">
-        <h2 class="text-3xl font-bold mb-10 text-center">The schedule</h2>
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div class="glass rounded-xl p-5">
-            <span class="text-open-accent font-mono text-xs tracking-wider uppercase">Tuesday</span>
-            <p class="text-open-white font-medium mt-2">2-hour live session on Twitch</p>
+        <div class="reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-center">The schedule</h2>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 reveal-stagger reveal">
+          <div class="glass glass-tilt rounded-xl p-5">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="w-2 h-2 rounded-full bg-open-accent animate-pulse"></span>
+              <span class="text-open-accent font-mono text-xs tracking-wider uppercase">Tuesday</span>
+            </div>
+            <p class="text-open-white font-medium">2-hour live session on Twitch</p>
             <p class="text-sm text-open-gray mt-1">New concepts, live building, questions welcome.</p>
           </div>
-          <div class="glass rounded-xl p-5">
-            <span class="text-open-accent font-mono text-xs tracking-wider uppercase">Thursday</span>
-            <p class="text-open-white font-medium mt-2">2-hour live session on Twitch</p>
+          <div class="glass glass-tilt rounded-xl p-5">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="w-2 h-2 rounded-full bg-open-accent animate-pulse"></span>
+              <span class="text-open-accent font-mono text-xs tracking-wider uppercase">Thursday</span>
+            </div>
+            <p class="text-open-white font-medium">2-hour live session on Twitch</p>
             <p class="text-sm text-open-gray mt-1">Deeper dives, working on projects together.</p>
           </div>
-          <div class="glass rounded-xl p-5">
-            <span class="text-open-accent font-mono text-xs tracking-wider uppercase">Sunday</span>
-            <p class="text-open-white font-medium mt-2">Office hours</p>
+          <div class="glass glass-tilt rounded-xl p-5">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="w-2 h-2 rounded-full bg-open-accent/60"></span>
+              <span class="text-open-accent font-mono text-xs tracking-wider uppercase">Sunday</span>
+            </div>
+            <p class="text-open-white font-medium">Office hours</p>
             <p class="text-sm text-open-gray mt-1">Bring whatever you're stuck on. Get help from me and the cohort.</p>
           </div>
-          <div class="glass rounded-xl p-5">
-            <span class="text-open-accent font-mono text-xs tracking-wider uppercase">24/7</span>
-            <p class="text-open-white font-medium mt-2">Discord</p>
+          <div class="glass glass-tilt rounded-xl p-5">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+              <span class="text-green-400 font-mono text-xs tracking-wider uppercase">24/7</span>
+            </div>
+            <p class="text-open-white font-medium">Discord</p>
             <p class="text-sm text-open-gray mt-1">Home base. You'll be in a Crew of 5–6 people. They're your accountability group.</p>
           </div>
         </div>
@@ -120,16 +190,16 @@ const COHORT_CAP = 100;
     <!-- 12-week structure -->
     <section class="section-fade py-20 px-6">
       <div class="max-w-4xl mx-auto">
-        <div class="text-center mb-12">
-          <h2 class="text-3xl font-bold mb-2">12 weeks. 3 phases.</h2>
-          <p class="text-open-gray">10 weeks of content + 2 break weeks built in for catching up and not burning out.</p>
+        <div class="reveal text-center mb-14">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-3">12 weeks. 3 phases.</h2>
+          <p class="text-open-gray text-lg">10 weeks of content + 2 break weeks built in for catching up and not burning out.</p>
         </div>
         <div class="relative space-y-0">
           <!-- Timeline line -->
-          <div class="hidden sm:block absolute left-[7.5rem] top-0 bottom-0 w-px bg-gradient-to-b from-open-accent/40 via-white/10 to-open-accent/40"></div>
+          <div class="hidden sm:block absolute left-[7.5rem] top-0 bottom-0 w-px bg-gradient-to-b from-open-accent/50 via-white/5 to-open-accent/50"></div>
 
           <!-- Phase 1 -->
-          <div class="relative flex flex-col sm:flex-row gap-4 sm:gap-8 pb-10">
+          <div class="relative flex flex-col sm:flex-row gap-4 sm:gap-8 pb-10 reveal">
             <div class="sm:w-[7.5rem] shrink-0 text-right">
               <span class="text-open-accent font-mono text-sm font-medium">Weeks 1–3</span>
             </div>
@@ -151,7 +221,7 @@ const COHORT_CAP = 100;
           </div>
 
           <!-- Break -->
-          <div class="relative flex flex-col sm:flex-row gap-4 sm:gap-8 pb-10">
+          <div class="relative flex flex-col sm:flex-row gap-4 sm:gap-8 pb-10 reveal">
             <div class="sm:w-[7.5rem] shrink-0 text-right">
               <span class="text-open-gray font-mono text-xs uppercase tracking-wider">Week 4</span>
             </div>
@@ -161,7 +231,7 @@ const COHORT_CAP = 100;
           </div>
 
           <!-- Phase 2 -->
-          <div class="relative flex flex-col sm:flex-row gap-4 sm:gap-8 pb-10">
+          <div class="relative flex flex-col sm:flex-row gap-4 sm:gap-8 pb-10 reveal">
             <div class="sm:w-[7.5rem] shrink-0 text-right">
               <span class="text-open-accent font-mono text-sm font-medium">Weeks 5–8</span>
             </div>
@@ -182,7 +252,7 @@ const COHORT_CAP = 100;
           </div>
 
           <!-- Break -->
-          <div class="relative flex flex-col sm:flex-row gap-4 sm:gap-8 pb-10">
+          <div class="relative flex flex-col sm:flex-row gap-4 sm:gap-8 pb-10 reveal">
             <div class="sm:w-[7.5rem] shrink-0 text-right">
               <span class="text-open-gray font-mono text-xs uppercase tracking-wider">Week 9</span>
             </div>
@@ -192,7 +262,7 @@ const COHORT_CAP = 100;
           </div>
 
           <!-- Phase 3 -->
-          <div class="relative flex flex-col sm:flex-row gap-4 sm:gap-8">
+          <div class="relative flex flex-col sm:flex-row gap-4 sm:gap-8 reveal">
             <div class="sm:w-[7.5rem] shrink-0 text-right">
               <span class="text-open-accent font-mono text-sm font-medium">Weeks 10–12</span>
             </div>
@@ -218,8 +288,10 @@ const COHORT_CAP = 100;
     <!-- What this is NOT -->
     <section class="section-fade py-20 px-6 dot-grid">
       <div class="max-w-3xl mx-auto">
-        <h2 class="text-3xl font-bold mb-10 text-center">What this is <span class="text-open-accent">not</span></h2>
-        <div class="grid sm:grid-cols-2 gap-4">
+        <div class="reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-center">What this is <span class="accent-gradient-text">not</span></h2>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 reveal-stagger reveal">
           <div class="glass rounded-xl p-5 flex items-start gap-3">
             <span class="text-open-accent text-lg mt-0.5 shrink-0">✕</span>
             <span class="text-open-gray text-sm leading-relaxed">Not a coding bootcamp. You don't need to learn programming languages. You need to know how to use an IDE as a text editor.</span>
@@ -243,91 +315,109 @@ const COHORT_CAP = 100;
     <!-- FAQ -->
     <section class="section-fade py-20 px-6">
       <div class="max-w-3xl mx-auto">
-        <h2 class="text-3xl font-bold mb-10 text-center">Questions you probably have</h2>
-        <div class="space-y-4">
+        <div class="reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-12 text-center">Questions you probably have</h2>
+        </div>
+        <div class="space-y-4 reveal">
           <details class="group glass rounded-xl overflow-hidden">
             <summary class="flex items-center justify-between cursor-pointer p-5">
               <span class="font-semibold">Do I need to know how to code?</span>
               <span class="text-open-accent group-open:rotate-45 transition-transform duration-200 text-xl leading-none">+</span>
             </summary>
-            <p class="px-5 pb-5 text-sm text-open-gray leading-relaxed">No. You need to be comfortable using a computer and willing to learn how a text editor works. The whole point of this cohort is that AI does the coding. You learn how to think clearly and direct it.</p>
+            <div class="px-5 pb-5 border-t border-white/5 pt-4">
+              <p class="text-sm text-open-gray leading-relaxed">No. You need to be comfortable using a computer and willing to learn how a text editor works. The whole point of this cohort is that AI does the coding. You learn how to think clearly and direct it.</p>
+            </div>
           </details>
           <details class="group glass rounded-xl overflow-hidden">
             <summary class="flex items-center justify-between cursor-pointer p-5">
               <span class="font-semibold">How much time per week?</span>
               <span class="text-open-accent group-open:rotate-45 transition-transform duration-200 text-xl leading-none">+</span>
             </summary>
-            <p class="px-5 pb-5 text-sm text-open-gray leading-relaxed">Plan for about 10 hours. That's 4 hours of live sessions (Tues + Thurs), office hours on Sunday, and daily homework. If you can't do 10, you can still get value, but the people who build the most are the ones who show up consistently.</p>
+            <div class="px-5 pb-5 border-t border-white/5 pt-4">
+              <p class="text-sm text-open-gray leading-relaxed">Plan for about 10 hours. That's 4 hours of live sessions (Tues + Thurs), office hours on Sunday, and daily homework. If you can't do 10, you can still get value, but the people who build the most are the ones who show up consistently.</p>
+            </div>
           </details>
           <details class="group glass rounded-xl overflow-hidden">
             <summary class="flex items-center justify-between cursor-pointer p-5">
               <span class="font-semibold">What if I can't finish in 12 weeks?</span>
               <span class="text-open-accent group-open:rotate-45 transition-transform duration-200 text-xl leading-none">+</span>
             </summary>
-            <p class="px-5 pb-5 text-sm text-open-gray leading-relaxed">That's what the break weeks are for. And it's also why the Discord stays open after the cohort ends. You either ship during or you ship after. The process and the community are yours to keep.</p>
+            <div class="px-5 pb-5 border-t border-white/5 pt-4">
+              <p class="text-sm text-open-gray leading-relaxed">That's what the break weeks are for. And it's also why the Discord stays open after the cohort ends. You either ship during or you ship after. The process and the community are yours to keep.</p>
+            </div>
           </details>
           <details class="group glass rounded-xl overflow-hidden">
             <summary class="flex items-center justify-between cursor-pointer p-5">
               <span class="font-semibold">Is this really free?</span>
               <span class="text-open-accent group-open:rotate-45 transition-transform duration-200 text-xl leading-none">+</span>
             </summary>
-            <p class="px-5 pb-5 text-sm text-open-gray leading-relaxed">Yes. No hidden fees, no upsell, no premium tier. 100Devs was free and it changed my life. This is me paying that forward.</p>
+            <div class="px-5 pb-5 border-t border-white/5 pt-4">
+              <p class="text-sm text-open-gray leading-relaxed">Yes. No hidden fees, no upsell, no premium tier. 100Devs was free and it changed my life. This is me paying that forward.</p>
+            </div>
           </details>
         </div>
       </div>
     </section>
 
     <!-- The Sword -->
-    <section id="sword" class="section-fade py-24 px-6 dot-grid relative">
+    <section id="sword" class="section-fade py-24 px-6 relative overflow-hidden">
       <!-- Background glow -->
       <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div class="w-[500px] h-[500px] bg-open-accent/5 rounded-full blur-[120px]"></div>
+        <div class="w-[600px] h-[600px] bg-open-accent/5 rounded-full blur-[150px] animate-pulse-slow"></div>
       </div>
 
-      <div class="max-w-3xl mx-auto text-center relative">
-        <h2 class="text-3xl font-bold mb-6">The Sword</h2>
-        <div class="text-left max-w-xl mx-auto">
-          <p class="text-open-gray mb-4 leading-relaxed">
-            To apply, you build something first. We call it the Sword.
-          </p>
-          <p class="text-open-gray mb-4 leading-relaxed">
-            It doesn't need to be big or impressive. It needs to be yours. Use any AI tool you want.
-            ChatGPT, Claude, Copilot, whatever. Build something: a landing page, a bot, a small tool
-            that solves a problem you actually have.
-          </p>
-          <p class="text-open-gray mb-4 leading-relaxed">
-            The point isn't the output. It's the process. We want to see that you tried,
-            got stuck, figured things out, and can talk about what happened. Document your build:
-            what you asked the AI, what worked, what didn't, what you learned.
-          </p>
-          <p class="text-open-gray mb-8 leading-relaxed text-sm">
-            There's no trick to it. If you put in real effort and can explain what you did,
-            you're in. If you paste in a ChatGPT response and call it done, you're not.
-          </p>
+      <div class="max-w-3xl mx-auto relative z-10">
+        <div class="reveal text-center mb-8">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-6">The Sword</h2>
         </div>
-        <a
-          href={SWORD_FORM_URL}
-          target="_blank"
-          rel="noopener"
-          class="glow-button inline-flex items-center gap-2 bg-open-accent text-open-black font-semibold px-8 py-4 rounded-xl text-base relative z-10"
-        >
-          Submit Your Sword →
-        </a>
-        <p class="text-xs text-open-gray mt-5">
-          Cohort 1 is capped at {COHORT_CAP} people. US only for now.
-        </p>
+        <div class="reveal gradient-border rounded-2xl p-8 sm:p-10">
+          <div class="text-left max-w-xl mx-auto">
+            <p class="text-open-gray mb-4 leading-relaxed">
+              To apply, you build something first. We call it the Sword.
+            </p>
+            <p class="text-open-gray mb-4 leading-relaxed">
+              It doesn't need to be big or impressive. It needs to be yours. Use any AI tool you want.
+              ChatGPT, Claude, Copilot, whatever. Build something: a landing page, a bot, a small tool
+              that solves a problem you actually have.
+            </p>
+            <p class="text-open-gray mb-4 leading-relaxed">
+              The point isn't the output. It's the process. We want to see that you tried,
+              got stuck, figured things out, and can talk about what happened. Document your build:
+              what you asked the AI, what worked, what didn't, what you learned.
+            </p>
+            <p class="text-open-gray mb-8 leading-relaxed text-sm opacity-70">
+              There's no trick to it. If you put in real effort and can explain what you did,
+              you're in. If you paste in a ChatGPT response and call it done, you're not.
+            </p>
+          </div>
+          <div class="text-center">
+            <a
+              href={SWORD_FORM_URL}
+              target="_blank"
+              rel="noopener"
+              class="glow-button inline-flex items-center gap-2 bg-open-accent text-open-black font-semibold px-10 py-4 rounded-xl text-lg relative z-10"
+            >
+              Submit Your Sword →
+            </a>
+            <p class="text-xs text-open-gray mt-5">
+              Cohort 1 is capped at {COHORT_CAP} people. US only for now.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- About Cnid -->
     <section class="section-fade py-20 px-6">
       <div class="max-w-3xl mx-auto">
-        <h2 class="text-3xl font-bold mb-8 text-center">Who's running this</h2>
-        <div class="gradient-border rounded-xl p-8">
+        <div class="reveal">
+          <h2 class="text-3xl sm:text-4xl font-bold mb-10 text-center">Who's running this</h2>
+        </div>
+        <div class="reveal gradient-border rounded-2xl p-8 sm:p-10">
           <div class="text-open-gray space-y-4 leading-relaxed relative">
             <p>
               I'm Cnid. Senior software engineer. I already knew how to code, but
-              <a href="https://leonnoel.com/100devs/" target="_blank" rel="noopener" class="underline hover:text-open-white transition-colors">100Devs</a>
+              <a href="https://leonnoel.com/100devs/" target="_blank" rel="noopener" class="underline decoration-open-accent/40 underline-offset-4 hover:text-open-white hover:decoration-open-accent transition-all">100Devs</a>
               made me a better engineer. Leon, thank you for everything you've done
               for me and everyone else. Open_ is me trying to pay that forward for the AI era.
             </p>
@@ -338,7 +428,7 @@ const COHORT_CAP = 100;
             </p>
             <p>
               So I stopped doing that. Now I spend most of my time before I write any code.
-              just talking through the idea with AI, writing down what it should actually do,
+              Just talking through the idea with AI, writing down what it should actually do,
               poking holes in the plan until it's solid. Then I build it one piece at a time.
               I've shipped a bunch of stuff this way. This site was built this way.
               It's not magic, it's a process. That's what I'm teaching.
@@ -353,7 +443,7 @@ const COHORT_CAP = 100;
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 px-6 border-t border-white/5">
+    <footer class="py-12 px-6 section-fade">
       <div class="max-w-5xl mx-auto flex flex-col sm:flex-row gap-6 items-start sm:items-center justify-between">
         <div>
           <p class="font-bold text-lg">Open<span class="text-open-accent">_</span></p>
@@ -374,4 +464,47 @@ const COHORT_CAP = 100;
     </footer>
 
   </main>
+
+  <!-- Minimal JS: cursor spotlight, scroll reveal, glass tilt tracking -->
+  <script>
+    // Cursor spotlight
+    const spotlight = document.getElementById('cursor-spotlight');
+    if (spotlight && window.matchMedia('(pointer: fine)').matches) {
+      document.addEventListener('mousemove', (e) => {
+        spotlight.style.left = e.clientX + 'px';
+        spotlight.style.top = e.clientY + 'px';
+      });
+      document.addEventListener('mouseenter', () => spotlight.style.opacity = '1');
+      document.addEventListener('mouseleave', () => spotlight.style.opacity = '0');
+    }
+
+    // Scroll reveal
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => {
+      // Don't hide hero elements on page load if they're already visible
+      observer.observe(el);
+    });
+
+    // Glass tilt: track mouse position for radial gradient
+    document.querySelectorAll('.glass-tilt').forEach((card) => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        (e.currentTarget as HTMLElement).style.setProperty('--mouse-x', x + '%');
+        (e.currentTarget as HTMLElement).style.setProperty('--mouse-y', y + '%');
+      });
+    });
+  </script>
 </Base>
