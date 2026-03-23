@@ -601,8 +601,7 @@ void main() {
         cx = e.clientX;
         cy = e.clientY;
         if (spotlight) {
-          spotlight.style.left = cx + 'px';
-          spotlight.style.top = cy + 'px';
+          spotlight.style.transform = `translate(${cx - 250}px, ${cy - 250}px)`;
         }
       });
 

@@ -78,21 +78,7 @@ body {
   border-color: rgba(249, 115, 22, 0.4);
 }
 
-/* ============================================
-   NOISE GRAIN TEXTURE
-   ============================================ */
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  pointer-events: none;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 256px 256px;
-}
+/* Noise grain removed — was forcing full-page compositing layer */
 
 /* ============================================
    CURSOR SPOTLIGHT
@@ -100,6 +86,8 @@ body::before {
 
 .cursor-spotlight {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 500px;
   height: 500px;
   border-radius: 50%;
@@ -111,8 +99,7 @@ body::before {
   );
   pointer-events: none;
   z-index: 1;
-  transform: translate(-50%, -50%);
-  will-change: left, top;
+  will-change: transform;
 }
 
 /* ============================================
@@ -135,27 +122,7 @@ body::before {
   overflow: hidden;
 }
 
-/* Sweep light reflection on hover */
-.glass::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.04),
-    transparent
-  );
-  transition: left 0.7s ease;
-  pointer-events: none;
-}
-
-.glass:hover::after {
-  left: 120%;
-}
+/* Light sweep removed — triggering paint on transition */
 
 .glass:hover {
   background: linear-gradient(
@@ -211,7 +178,7 @@ body::before {
 }
 
 /* ============================================
-   GRADIENT BORDERS (rotating conic)
+   GRADIENT BORDERS (static — no animation for perf)
    ============================================ */
 
 .gradient-border {
@@ -219,37 +186,12 @@ body::before {
   background: rgba(255, 255, 255, 0.02);
   border-radius: 1rem;
   overflow: hidden;
+  border: 1px solid rgba(249, 115, 22, 0.15);
+  transition: border-color 0.4s ease;
 }
 
-.gradient-border::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: conic-gradient(
-    from var(--border-angle, 0deg),
-    rgba(249, 115, 22, 0.4),
-    rgba(255, 255, 255, 0.05) 30%,
-    rgba(249, 115, 22, 0.2) 50%,
-    rgba(255, 255, 255, 0.05) 70%,
-    rgba(249, 115, 22, 0.4)
-  );
-  animation: border-rotate 6s linear infinite;
-  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  mask-composite: exclude;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-}
-
-@property --border-angle {
-  syntax: '<angle>';
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes border-rotate {
-  to { --border-angle: 360deg; }
+.gradient-border:hover {
+  border-color: rgba(249, 115, 22, 0.35);
 }
 
 /* ============================================
@@ -476,13 +418,9 @@ details summary { list-style: none; }
    ANIMATIONS
    ============================================ */
 
-@keyframes pulse-slow {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.05); }
-}
-
+/* pulse-slow removed — animating opacity+scale on huge blur elements kills perf */
 .animate-pulse-slow {
-  animation: pulse-slow 6s ease-in-out infinite;
+  opacity: 0.4;
 }
 
 /* ============================================
